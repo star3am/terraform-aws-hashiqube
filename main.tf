@@ -112,7 +112,7 @@ resource "aws_instance" "hashiqube" {
   metadata_options {
     http_endpoint = "enabled"
   }
-  user_data_base64 = base64gzip(templatefile("${path.module}/../../modules/shared/startup_script", {
+  user_data_base64 = base64gzip(templatefile("${path.module}/modules/shared/startup_script", {
     HASHIQUBE_AWS_IP     = aws_eip.hashiqube.public_ip
     HASHIQUBE_AZURE_IP   = var.azure_hashiqube_ip == null ? "" : var.azure_hashiqube_ip
     HASHIQUBE_GCP_IP     = var.gcp_hashiqube_ip == null ? "" : var.gcp_hashiqube_ip
